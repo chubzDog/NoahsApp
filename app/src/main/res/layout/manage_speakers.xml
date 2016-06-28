@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ms_head"/>
+    <EditText
+        android:id="@+id/s_name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/ms_name"/>
+    <EditText
+        android:id="@+id/s_age"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/ms_age"/>
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </DatePicker>
+    <Button
+        android:id="@+id/ms_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add"/>
+</LinearLayout>
