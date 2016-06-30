@@ -1,8 +1,10 @@
 package com.ronisserles.noahsapp;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +17,31 @@ import android.widget.Toast;
  */
 public class ManageSpeakers extends android.support.v4.app.Fragment {
 
-    EditText name;
-    EditText age;
-    Button add_btn;
+    private EditText name;
+    //EditText age;
+    private Button add_dob;
+    private Button add_btn;
+    private String dob;
+
+    public ManageSpeakers(){}//empty constructor
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.manage_speakers,container, false);
         name = (EditText) view.findViewById(R.id.s_name);
-        age = (EditText) view.findViewById(R.id.s_age);
-        add_btn = (Button) view.findViewById(R.id.ms_add_btn);
+        //age = (EditText) view.findViewById(R.id.s_age);
 
+        add_dob = (Button) view.findViewById(R.id.ms_dob_btn);
+        add_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDobPicker();
+            }
+        });
+
+        add_btn = (Button) view.findViewById(R.id.ms_add_btn);
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +52,7 @@ public class ManageSpeakers extends android.support.v4.app.Fragment {
     }
 
     public void addSpeaker(){
-        if(StringUtils.isEmpty(name) && StringUtils.isEmpty(age)){
+        if(StringUtils.isEmpty(name)){
             Toast.makeText(getActivity(),R.string.error_001,Toast.LENGTH_SHORT).show();
         }
         else {
@@ -53,5 +68,15 @@ public class ManageSpeakers extends android.support.v4.app.Fragment {
 //        else {
 //            Toast.makeText(getActivity(),R.string.error_001, Toast.LENGTH_SHORT).show();
 //        }
+    }
+
+    public void openDobPicker (){
+        DialogFragment dobPick = new DobPicker();
+        dobPick.show(getFragmentManager(),"dobPicker");
+    }
+
+    public void setDob(String _dob){
+        dob = _dob;
+        Toast.makeText(getActivity(),dob,Toast.LENGTH_SHORT).show();
     }
 }

@@ -4,6 +4,7 @@
     <string name="ms_name">Name</string>
     <string name="ms_age">Age</string>
     <string name="btn_add">Add</string>
+    <string name="btn_dob">Date of Birth</string>
     <string name="error_001">"please add missing details"</string>
     <string-array name="menu_items">
         <item>Manage Speakers</item>

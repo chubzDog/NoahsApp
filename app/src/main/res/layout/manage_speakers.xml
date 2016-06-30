@@ -13,18 +13,15 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="@string/ms_name"/>
-    <EditText
-        android:id="@+id/s_age"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/ms_age"/>
-    <DatePicker
+    <Button
+        android:id="@+id/ms_dob_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </DatePicker>
+        android:layout_height="wrap_content"
+        android:text="@string/btn_dob"/>
     <Button
         android:id="@+id/ms_add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_add"/>
+
 </LinearLayout>

@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements DobPicker.OnUserAction{
 
     private String[] menuItems;
     private TypedArray menuIcons;
@@ -36,6 +36,13 @@ public class MainActivity extends FragmentActivity {
         menuContent.setOnItemClickListener(new MenuClickListener());
     }
 
+    @Override
+    public void onClosedDialog(String result) {
+        //Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+        ManageSpeakers ms = (ManageSpeakers)getSupportFragmentManager().findFragmentByTag(Const.TABLE_SPEAKERS);
+        ms.setDob(result);
+    }
+
     private class MenuClickListener implements ListView.OnItemClickListener{
 
         @Override
@@ -50,7 +57,7 @@ public class MainActivity extends FragmentActivity {
             case 0:
                 android.support.v4.app.Fragment ms = new ManageSpeakers();
                 FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.content, ms).commit();
+                fm.beginTransaction().replace(R.id.content, ms,Const.TABLE_SPEAKERS).commit();
                 drawer.closeDrawer(menuContent);
                 break;
             default:
